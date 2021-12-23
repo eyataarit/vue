@@ -12,6 +12,9 @@
 </template>
 <script>
 import readXlsxFile from 'read-excel-file'
+import axios from "axios"
+
+
 export default {
   name: "File",
   data(){
@@ -38,7 +41,22 @@ export default {
 
   created(){
     this.getUsers()
-  }
+  },
+
+
+  //verify emails with mailboxplayer
+
+  mounted() {  
+    var access_key = '125cdceab098b7959ea29bb17e63ab71'
+    var email_address = user.email,
+    axios.get('http://apilayer.net/api/check?access_key=' + access_key + '&email=' + email_address)
+ .then(response(json =>  {
+    // Access and use your preferred validation result objects
+    console.log(json.format_valid);
+    console.log(json.smtp_check);
+    console.log(json.score);
+    }
+))
 };
 </script>
 <style>
