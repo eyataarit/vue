@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import SignIn from '../components/SignIn.vue'
 import SignUp from '../components/SignUp.vue'
 import Home from '../components/Home.vue'
+import File from '../components/File.vue'
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -19,6 +20,10 @@ const router = new VueRouter({
         {
             path: "/signup",
             component: SignUp
+        },
+        {
+            path:'/file',
+            component: File
         }
     ]
 });
