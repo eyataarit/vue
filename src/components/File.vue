@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 <template>
   <div>
     <div>
@@ -13,19 +14,31 @@
 import readXlsxFile from 'read-excel-file'
 export default {
   name: "File",
+  data(){
+    return {
+      users:[]
+    }
+  },
   methods: {
+  getUsers() {
+    fetch('http://localhost:5000/get', {
+      method:"GET",
+      headers:{
+        "Content-Type" : "application/json"
+        }
+    })
+  },
+  
   onChange(event) {
     let xlsxfile = event.target.files ? event.target.files[0] : null;
     readXlsxFile(xlsxfile).then((rows) => {
       this.users = rows
     })
   }},
-  props: {
-      users : []
-      //array of arrays, 
-      //each element is a user, 
-      //except for the first row (columns name)
-  },
+
+  created(){
+    this.getUsers()
+  }
 };
 </script>
 <style>
