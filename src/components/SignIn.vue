@@ -27,7 +27,16 @@
         <input type="checkbox" class="form-check-input" id="check" />
         <label class="form-check-label" for="check">Remember Me</label>
       </div>
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" class="btn btn-primary">
+        <!-- This is not how we are supposed to do it
+        Not just a simple routing
+        In fact we need an onSubmit method to verify the authentification,
+        the correct and existing mail and password -->
+        <router-link :to="{ path: 'file' }" >
+        Login
+        </router-link>
+
+        </button>
       <span>
         You don't have an account yet?
         <router-link :to="{ path: 'signup' }">Sign up</router-link>
